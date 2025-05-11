@@ -1,1 +1,2 @@
 PGPASSWORD=password123 psql -h postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com -U postgres -d postgres -p 5432
+kubectl run -it --rm busybox --image=busybox /bin/sh

@@ -27,10 +27,11 @@ spec:
           image: rabbitmq:3.11-management-alpine
           livenessProbe:
             exec:
-              command:
-                - rabbitmq-diagnostics
-                - -q
-                - ping
+              command: ["rabbitmq-diagnostics", "-q", "ping"]
+              # command:
+              #   - rabbitmq-diagnostics
+              #   - -q
+              #   - ping
             failureThreshold: 3
             initialDelaySeconds: 30  # Đợi 30s trước khi kiểm tra lần đầu tiên
             periodSeconds: 30       # Kiểm tra mỗi 30s
