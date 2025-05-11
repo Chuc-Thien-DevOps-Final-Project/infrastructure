@@ -1,19 +1,7 @@
 version: "3"
 
 services:
-  postgres:
-    image: postgres:14-alpine
-    environment:
 
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=P@ssw0rd
-    healthcheck:
-      test: ["CMD", "pg_isready"]
-    ports:
-      - "5432:5432"
-    networks:
-      - coffeeshop-network
 
   rabbitmq:
     image: rabbitmq:3.11-management-alpine
@@ -30,6 +18,7 @@ services:
       - "15672:15672"
     networks:
       - coffeeshop-network
+
   
   proxy:
     build:
@@ -51,9 +40,7 @@ services:
       - coffeeshop-network
 
   product:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile-product
+
     image: cuongopswat/go-coffeeshop-product
     environment:
       APP_NAME: 'product-service in docker'
@@ -70,15 +57,14 @@ services:
     environment:
       APP_NAME: 'counter-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:password123@postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com:5432/postgres 
+      PG_DSN_URL: host=postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com user=postgres password=password123 dbname=postgres sslmode=disable
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
       PRODUCT_CLIENT_URL: product:5001
     ports:
       - 5002:5002
     depends_on:
-      postgres:
-        condition: service_healthy
+      
       rabbitmq:
         condition: service_healthy
     networks:
@@ -92,12 +78,12 @@ services:
     environment:
       APP_NAME: 'barista-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:password123@postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com:5432/postgres
+      PG_DSN_URL: host=postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com user=postgres password=password123 dbname=postgres sslmode=disable
+ 
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
     depends_on:
-      postgres:
-        condition: service_healthy
+      
       rabbitmq:
         condition: service_healthy
     networks:
@@ -111,12 +97,11 @@ services:
     environment:
       APP_NAME: 'kitchen-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:password123@postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com:5432/postgres
+      PG_DSN_URL: host=postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com user=postgres password=password123 dbname=postgres sslmode=disable
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
     depends_on:
-      postgres:
-        condition: service_healthy
+      
       rabbitmq:
         condition: service_healthy
     networks:
@@ -136,6 +121,14 @@ services:
       - proxy
     networks:
       - coffeeshop-network
+  postgres-test:
+    image: ubuntu:latest
+    environment:
+      PGPASSWORD: password123
+    command: ["bash", "-c", "while true; do sleep 1000; done"]
+    networks:
+      - coffeeshop-network
 
 networks:
-  coffeeshop-network:
+  coffeeshop-network: 
+

@@ -4,9 +4,10 @@ services:
   postgres:
     image: postgres:14-alpine
     environment:
+
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password123
+      - POSTGRES_PASSWORD=P@ssw0rd
     healthcheck:
       test: ["CMD", "pg_isready"]
     ports:
@@ -50,7 +51,9 @@ services:
       - coffeeshop-network
 
   product:
-
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-product
     image: cuongopswat/go-coffeeshop-product
     environment:
       APP_NAME: 'product-service in docker'
@@ -67,8 +70,8 @@ services:
     environment:
       APP_NAME: 'counter-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:password123@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=password123 dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
+      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
       PRODUCT_CLIENT_URL: product:5001
     ports:
@@ -89,8 +92,8 @@ services:
     environment:
       APP_NAME: 'barista-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:password123@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=password123 dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
+      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
     depends_on:
       postgres:
@@ -108,8 +111,8 @@ services:
     environment:
       APP_NAME: 'kitchen-service in docker'
       IN_DOCKER: "true"
-      PG_URL: postgres://postgres:password123@postgres:5432/postgres
-      PG_DSN_URL: host=postgres user=postgres password=password123 dbname=postgres sslmode=disable
+      PG_URL: postgres://postgres:P@ssw0rd@postgres:5432/postgres
+      PG_DSN_URL: host=postgres user=postgres password=P@ssw0rd dbname=postgres sslmode=disable
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
     depends_on:
       postgres:
@@ -135,4 +138,4 @@ services:
       - coffeeshop-network
 
 networks:
-  coffeeshop-network: 
+  coffeeshop-network:

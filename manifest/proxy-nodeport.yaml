@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-service
+spec:
+  type: NodePort
+  selector:
+    io.kompose.service: proxy  # Selector này phải khớp với label trong Deployment
+  ports:
+    - protocol: TCP
+      port: 5000         # Cổng mà dịch vụ sẽ lắng nghe trong cluster
+      targetPort: 5000   # Cổng trong container mà proxy-service đang lắng nghe
+         # Cổng sẽ mở trên các node trong cluster

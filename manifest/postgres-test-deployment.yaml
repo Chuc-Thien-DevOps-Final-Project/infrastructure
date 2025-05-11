@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: postgres-test
+  name: postgres-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: postgres-test
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.35.0 (HEAD)
+      labels:
+        io.kompose.service: postgres-test
+    spec:
+      containers:
+        - args:
+            - bash
+            - -c
+            - while true; do sleep 1000; done
+          env:
+            - name: PGPASSWORD
+              value: password123
+          image: ubuntu:latest
+          name: postgres-test
+      restartPolicy: Always
