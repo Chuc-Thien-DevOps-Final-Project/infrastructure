@@ -21,17 +21,9 @@ spec:
         io.kompose.service: proxy
     spec:
       containers:
-        - env:
-            - name: APP_NAME
-              value: proxy-service in docker
-            - name: GRPC_COUNTER_HOST
-              value: counter
-            - name: GRPC_COUNTER_PORT
-              value: "5002"
-            - name: GRPC_PRODUCT_HOST
-              value: product
-            - name: GRPC_PRODUCT_PORT
-              value: "5001"
+        - envFrom:
+            - configMapRef:
+                name: proxy-config
           image: cuongopswat/go-coffeeshop-proxy
           name: proxy
           ports:

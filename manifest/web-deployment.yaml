@@ -21,11 +21,12 @@ spec:
         io.kompose.service: web
     spec:
       containers:
-        - env:
-            - name: REVERSE_PROXY_URL
-              value: http://a77bfa0eda5f54945a5d27a9a51e6ebb-1054272535.us-east-2.elb.amazonaws.com:5000/
-            - name: WEB_PORT
-              value: "8888"
+        - envFrom:
+            - configMapRef:
+                name: web-config
+            - secretRef:
+                name: postgres-db-creds
+
           image: cuongopswat/go-coffeeshop-web
           name: web
           ports:

@@ -21,11 +21,9 @@ spec:
         io.kompose.service: rabbitmq
     spec:
       containers:
-        - env:
-            - name: RABBITMQ_DEFAULT_PASS
-              value: guest
-            - name: RABBITMQ_DEFAULT_USER
-              value: guest
+        - envFrom:
+            - secretRef:
+                name: rabbitmq-creds
           image: rabbitmq:3.11-management-alpine
           livenessProbe:
             exec:

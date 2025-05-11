@@ -21,17 +21,11 @@ spec:
         io.kompose.service: kitchen
     spec:
       containers:
-        - env:
-            - name: APP_NAME
-              value: kitchen-service in docker
-            - name: IN_DOCKER
-              value: "true"
-            - name: PG_DSN_URL
-              value: host=postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com user=postgres password=password123 dbname=postgres sslmode=disable
-            - name: PG_URL
-              value: postgres://postgres:password123@postgres.c4vs6wsmaepc.us-east-1.rds.amazonaws.com:5432/postgres
-            - name: RABBITMQ_URL
-              value: amqp://guest:guest@rabbitmq:5672/
+        - envFrom:
+          - configMapRef:
+              name: kitchen-config
+          - secretRef:
+              name: postgres-db-creds
           image: cuongopswat/go-coffeeshop-kitchen
           name: kitchen
       restartPolicy: Always

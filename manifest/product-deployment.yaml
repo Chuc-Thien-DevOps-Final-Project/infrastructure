@@ -21,9 +21,9 @@ spec:
         io.kompose.service: product
     spec:
       containers:
-        - env:
-            - name: APP_NAME
-              value: product-service in docker
+        - envFrom:
+          - configMapRef:
+              name: product-config
           image: cuongopswat/go-coffeeshop-product
           name: product
           ports:
