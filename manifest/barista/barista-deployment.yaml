@@ -5,29 +5,27 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.35.0 (HEAD)
   labels:
-    io.kompose.service: postgres-test
-  name: postgres-test
+    io.kompose.service: barista
+  name: barista
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: postgres-test
+      io.kompose.service: barista
   template:
     metadata:
       annotations:
         kompose.cmd: kompose convert -f docker-compose.yml
         kompose.version: 1.35.0 (HEAD)
       labels:
-        io.kompose.service: postgres-test
+        io.kompose.service: barista
     spec:
       containers:
-        - args:
-            - bash
-            - -c
-            - while true; do sleep 1000; done
-          env:
-            - name: PGPASSWORD
-              value: password123
-          image: ubuntu:latest
-          name: postgres-test
+        - envFrom:
+            - configMapRef:
+                name: barista-config
+            - secretRef:
+                name: postgres-db-creds
+          image: cuongopswat/go-coffeeshop-barista
+          name: barista
       restartPolicy: Always
