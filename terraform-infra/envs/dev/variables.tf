@@ -39,3 +39,23 @@ variable "ssh_key_path" {
   default     = "./tct-ssh-key.pem" # Example path, can be overridden
   
 }
+
+variable "provisioner_commands" {
+  description = "Provisioner commands for EC2 instance"
+  type        = list(string)
+
+  default = [
+    "sudo yum update -y",
+    "sudo amazon-linux-extras enable docker",
+    "sudo yum install -y docker",
+    "sudo systemctl start docker",
+    "sudo systemctl enable docker",
+    "sudo usermod -aG docker $USER",
+    "newgrp docker",
+    # "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose",
+    # "sudo chmod +x /usr/local/bin/docker-compose",
+    # "docker-compose version",
+
+  ]
+  
+}

@@ -31,7 +31,9 @@ module "security_group" {
   ingress_rules = [
     { from_port = 22, to_port = 22, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },   # SSH
     { from_port = 80, to_port = 80, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },   # HTTP
-    { from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }, # HTTPS
+    { from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+    { from_port = 8888, to_port = 8888, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"]},
+    { from_port = 5000, to_port = 5000, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"]} # HTTPS
   ]
   
 }
@@ -44,7 +46,9 @@ module "ec2" {
   sg_id = module.security_group.security_group_id
   vpc_id = module.vpc.vpc_id
   subnet_id = element(module.vpc.public_subnet_ids, 0) # Use the first public subnet
-  provisioner_commands = []
+  provisioner_commands = null #var.provisioner_commands
+  user = "ec2-user"
+  instance_ami = "ami-0100e595e1cc1ff7f"
 
   
 }
