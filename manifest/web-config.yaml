@@ -4,5 +4,5 @@ metadata:
   name: web-config
 data:
   # REVERSE_PROXY_URL: 'http://127.0.0.1:5000'
-  REVERSE_PROXY_URL: 'http://adb39259e18c9439687b3c8dd93fd4ed-1576754985.us-east-2.elb.amazonaws.com:5000'
+  REVERSE_PROXY_URL: 'http://opswat.chucthien.id.vn/proxy'
   WEB_PORT: '8888'
