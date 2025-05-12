@@ -15,7 +15,7 @@ terraform {
 }
 
 module "vpc" {
-  source = "../modules/vpc"
+  source = "../../modules/vpc"
   name = "${var.project_name}-prod-vpc"
   
 }
