@@ -26,6 +26,6 @@ spec:
                 name: barista-config
             - secretRef:
                 name: postgres-db-creds
-          image: cuongopswat/go-coffeeshop-barista
+          image: 492804330065.dkr.ecr.us-east-2.amazonaws.com/go-coffeeshop-barista
           name: barista
       restartPolicy: Always
