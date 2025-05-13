@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: counter
-          image: cuongopswat/go-coffeeshop-counter
+          image: 492804330065.dkr.ecr.us-east-2.amazonaws.com/go-coffeeshop-counter
           ports:
             - containerPort: 5002
           envFrom:

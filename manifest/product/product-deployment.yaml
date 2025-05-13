@@ -24,7 +24,7 @@ spec:
         - envFrom:
           - configMapRef:
               name: product-config
-          image: cuongopswat/go-coffeeshop-product
+          image: 492804330065.dkr.ecr.us-east-2.amazonaws.com/go-coffeeshop-product
           name: product
           ports:
             - containerPort: 5001

@@ -26,6 +26,6 @@ spec:
               name: kitchen-config
           - secretRef:
               name: postgres-db-creds
-          image: cuongopswat/go-coffeeshop-kitchen
+          image: 492804330065.dkr.ecr.us-east-2.amazonaws.com/go-coffeeshop-kitchen
           name: kitchen
       restartPolicy: Always
