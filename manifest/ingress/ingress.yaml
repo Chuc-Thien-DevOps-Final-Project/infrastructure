@@ -26,3 +26,10 @@ spec:
                 name: proxy
                 port:
                   number: 5000
+          - backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+            path: /argocd
+            pathType: Prefix
