@@ -33,10 +33,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-argocd-ns
-  namespace: argocd  # Thay nếu bạn không dùng namespace default
+  namespace: argocd  
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
     traefik.ingress.kubernetes.io/router.middlewares: default-strip-prefix@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: argocd-strip-prefix-argocd@kubernetescrd
     
 spec:
   rules:
