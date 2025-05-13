@@ -1,7 +1,7 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default = "tct-eks-cluster"
+  default = "tct-eks-cluster-prod"
 }
 
 variable "project_name" {
