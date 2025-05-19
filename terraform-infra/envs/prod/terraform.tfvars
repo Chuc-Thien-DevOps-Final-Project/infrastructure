@@ -9,7 +9,7 @@
 #   "subnet-0006f815c074a166b",
 # ]
 
-cluster_name = "tct-eks-cluster-prod-test"
+cluster_name = "tct-eks-cluster-prod"
 project_name = "tct-final-project"
 cluster_version = "1.32"
 node_groups = {
