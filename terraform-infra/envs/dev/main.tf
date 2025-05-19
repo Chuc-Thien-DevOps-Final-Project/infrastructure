@@ -26,7 +26,7 @@ module "security_group" {
   source         = "../../modules/security_group"
   vpc_id         = module.vpc.vpc_id
   sg_name        = "${var.project_name}-dev-sg"
-  sg_description = "Security group for my EC2 instance in dev"
+  sg_description = var.sg_description
 
   ingress_rules = [
     { from_port = 22, to_port = 22, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }, # SSH
@@ -47,8 +47,8 @@ module "ec2" {
   vpc_id               = module.vpc.vpc_id
   subnet_id            = element(module.vpc.public_subnet_ids, 0) # Use the first public subnet
   provisioner_commands = null                                     #var.provisioner_commands
-  user                 = "ec2-user"
-  instance_ami         = "ami-0100e595e1cc1ff7f"
+  user                 = var.ssh_user
+  instance_ami         = var.instance_ami
 
 
 }

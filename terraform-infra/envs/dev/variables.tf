@@ -5,26 +5,13 @@ variable "project_name" {
 
 }
 
-variable "bucket_name" {
-  description = "S3 bucket name for Terraform state"
+variable "sg_description" {
+  description = "Description for the security group"
   type        = string
-  default     = "tct-final-project-terraform-state"
-
+  default     = "Security group for EC2 instance"
+  
 }
 
-variable "key" {
-  description = "S3 key for Terraform state"
-  type        = string
-  default     = "terraform.tfstate"
-
-}
-
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-2"
-
-}
 
 variable "ssh_key_name" {
   description = "Name of the SSH key pair for EC2 instance"
@@ -58,4 +45,18 @@ variable "provisioner_commands" {
 
   ]
 
+}
+
+variable "ssh_user" {
+  description = "SSH user for EC2 instance"
+  type        = string
+  default     = "ec2-user" # Example SSH user, can be overridden for Amazon Linux 2
+  
+}
+
+variable "instance_ami" {
+  description = "AMI ID for the EC2 instance"
+  type        = string
+  default     = "ami-0100e595e1cc1ff7f" # Example AMI ID for Amazon Linux 2 in us-east-2, can be overridden
+  
 }
