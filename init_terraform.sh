@@ -1,12 +1,14 @@
 #!/bin/bash
+# This script initializes a Terraform repository structure with modules and environments.
 
-# Tên repo gốc
+
+# Name of the root directory
 ROOT_DIR="terraform-infra"
 
-# Tạo cấu trúc thư mục
+# Check if the directory already exists
 mkdir -p "$ROOT_DIR"/{modules/{vpc,ec2},envs/{dev,staging,prod}}
 
-# Tạo file mẫu cho mỗi môi trường
+# Create the main Terraform configuration file
 for ENV in dev staging prod; do
   cat > "$ROOT_DIR/envs/$ENV/main.tf" <<EOF
 # main.tf for $ENV
@@ -25,7 +27,7 @@ EOF
   touch "$ROOT_DIR/envs/$ENV/terraform.tfvars"
 done
 
-# Tạo module cơ bản
+# Create the module files
 for MODULE in vpc ec2; do
   cat > "$ROOT_DIR/modules/$MODULE/main.tf" <<EOF
 # $MODULE module

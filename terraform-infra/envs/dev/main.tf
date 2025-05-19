@@ -33,7 +33,7 @@ module "security_group" {
     { from_port = 80, to_port = 80, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },   # HTTP
     { from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
     { from_port = 8888, to_port = 8888, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"]},
-    { from_port = 5000, to_port = 5000, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"]} # HTTPS
+    { from_port = 5000, to_port = 5000, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"]} 
   ]
   
 }
