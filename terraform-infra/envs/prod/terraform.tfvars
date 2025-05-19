@@ -9,6 +9,8 @@
 #   "subnet-0006f815c074a166b",
 # ]
 
+cluster_name = "tct-eks-cluster-prod-test"
+project_name = "tct-final-project"
 cluster_version = "1.32"
 node_groups = {
   eks_nodes = {
@@ -22,5 +24,5 @@ node_groups = {
   }
 }
 
-cluster_role_arn = "arn:aws:iam::XXXXXXXXXXXX:role/thuan_devops_role"
-node_role_arn    = "arn:aws:iam::XXXXXXXXXXXX:role/thuan_devops_role"
+cluster_role_arn = "arn:aws:iam::xxxxxxxxxxxx:role/devops_role"
+node_role_arn    = "arn:aws:iam::xxxxxxxxxxxx:role/devops_role"
