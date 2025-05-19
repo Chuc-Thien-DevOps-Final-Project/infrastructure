@@ -1,19 +1,19 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default = "tct-eks-cluster-prod"
+  default     = "tct-eks-cluster-prod"
 }
 
 variable "project_name" {
   description = "Project name"
   type        = string
-  default = "tct-final-project"
-  
+  default     = "tct-final-project"
+
 }
 variable "cluster_version" {
   description = "Kubernetes version"
   type        = string
-  default = "1.32"
+  default     = "1.32"
 }
 
 variable "vpc_id" {
@@ -43,12 +43,12 @@ variable "node_groups" {
 variable "cluster_role_arn" {
   description = "IAM role ARN for the EKS cluster"
   type        = string
-  default =  null
+  default     = null
 }
 
 variable "node_role_arn" {
   description = "IAM role ARN for the EKS node group"
   type        = string
-    default =  null
-  
+  default     = null
+
 }

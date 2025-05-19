@@ -23,4 +23,4 @@ node_groups = {
 }
 
 cluster_role_arn = "arn:aws:iam::492804330065:role/thuan_devops_role"
-node_role_arn = "arn:aws:iam::492804330065:role/thuan_devops_role"
+node_role_arn    = "arn:aws:iam::492804330065:role/thuan_devops_role"

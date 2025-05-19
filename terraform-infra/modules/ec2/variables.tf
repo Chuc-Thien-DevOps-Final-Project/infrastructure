@@ -148,5 +148,5 @@ variable "sg_id" {
   description = "Security group ID to associate with the EC2 instance"
   type        = string
   default     = "" # Example security group ID, can be overridden
-  
+
 }

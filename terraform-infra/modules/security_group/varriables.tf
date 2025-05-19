@@ -2,14 +2,14 @@ variable "sg_name" {
   description = "Name of the security group"
   type        = string
   default     = "my-security-group"
-  
+
 }
 
 variable "sg_description" {
   description = "Description of the security group"
   type        = string
   default     = "Security group for my EC2 instance"
-  
+
 }
 
 variable "ingress_rules" {
@@ -48,5 +48,5 @@ variable "vpc_id" {
   description = "VPC ID where the security group will be created"
   type        = string
   # default     = "" # Set this to the VPC ID where you want to create the security group
-  
+
 }
