@@ -20,7 +20,7 @@ variable "vpc_id" {
 variable "subnet_ids" {
   description = "Subnet IDs"
   type        = list(string)
-  default = [ "subnet-0ad1f45dee4200759" ]
+  default     = ["subnet-0ad1f45dee4200759"]
   # Example: ["subnet-0ad1f45dee4200759", "subnet-062c801042588df9a", "subnet-0006f815c074a166b"]
   # Note: You can use module.vpc.public_subnet_ids or module.vpc.private_subnet_ids if using a VPC module
 }

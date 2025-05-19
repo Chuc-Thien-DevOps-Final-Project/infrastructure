@@ -22,15 +22,15 @@ module "vpc" {
 
 
 module "eks" {
-  source = "../../modules/eks"
-  cluster_name = var.cluster_name
-  cluster_version = var.cluster_version
-  vpc_id = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnet_ids
-  node_groups = var.node_groups
+  source           = "../../modules/eks"
+  cluster_name     = var.cluster_name
+  cluster_version  = var.cluster_version
+  vpc_id           = module.vpc.vpc_id
+  subnet_ids       = module.vpc.private_subnet_ids
+  node_groups      = var.node_groups
   cluster_role_arn = var.cluster_role_arn
-  node_role_arn = var.node_role_arn
+  node_role_arn    = var.node_role_arn
 
-  
+
 }
 

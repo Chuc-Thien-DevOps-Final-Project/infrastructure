@@ -19,13 +19,13 @@ variable "cluster_version" {
 variable "vpc_id" {
   description = "VPC ID"
   type        = string
-  default = "vpc-0dd1e20336beb75e5"
+  default     = "vpc-0dd1e20336beb75e5"
 }
 
 variable "subnet_ids" {
   description = "Subnet IDs"
   type        = list(string)
-  default = [ "subnet-0ad1f45dee4200759" ]
+  default     = ["subnet-0ad1f45dee4200759"]
 }
 
 variable "node_groups" {

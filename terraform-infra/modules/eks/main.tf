@@ -5,8 +5,8 @@
 
 
 resource "aws_eks_cluster" "main" {
-  name    = var.cluster_name
-  version = var.cluster_version
+  name     = var.cluster_name
+  version  = var.cluster_version
   role_arn = var.cluster_role_arn
 
   vpc_config {
@@ -24,8 +24,8 @@ resource "aws_eks_node_group" "main" {
 
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = each.key
-  node_role_arn = var.node_role_arn
-  subnet_ids    = var.subnet_ids
+  node_role_arn   = var.node_role_arn
+  subnet_ids      = var.subnet_ids
   # subnet_ids    = module.vpc.private_subnet_ids if you want to use private subnets in module
 
   instance_types = each.value.instance_types
