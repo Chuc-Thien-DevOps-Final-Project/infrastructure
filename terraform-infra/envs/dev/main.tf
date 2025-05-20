@@ -29,9 +29,7 @@ module "security_group" {
   sg_description = var.sg_description
 
   ingress_rules = [
-    { from_port = 22, to_port = 22, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }, # SSH
-    { from_port = 80, to_port = 80, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }, # HTTP
-    { from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+    { from_port = 22, to_port = 22, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }, # SSH, "0.0.0.0/0" because use GitHub action runner(don't know its IP) to SSH into EC2
     { from_port = 8888, to_port = 8888, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
     { from_port = 5000, to_port = 5000, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
   ]
